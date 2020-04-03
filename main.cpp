@@ -12,6 +12,7 @@
 #include "tree.h"
 #include "kmp.h"
 #include "ac_test.h"
+#include "ac_tree.h"
 
 using namespace std;
 using namespace cv;
@@ -316,6 +317,11 @@ void test16()
         std::cout << "can't find!" << std::endl;
     else
         std::cout << a << std::endl;
+    if (m.find(5) == m.end()) {
+        std::cout << "There isn't m[5]" << std::endl;
+    }
+    auto i = m.find(1);
+    std::cout << i->first << ", " << i->second << std::endl;
 }
 
 void test17()
@@ -350,9 +356,39 @@ void test19()
     main_();
 }
 
+void test20()
+{
+    AC_Tree ac;
+//    ac.insert(L"say");
+//    ac.insert(L"she");
+//    ac.insert(L"shr");
+//    ac.insert(L"he");
+//    ac.insert(L"her");
+//    ac.build_ac_automation();
+//    std::vector<std::wstring> res = ac.parse_text(L"yasherhs");
+    std::vector<std::wstring> words = {L"好的", L"哈哈", L"小心", L"good", L"千万别翻车了"};
+    std::wstring text = L"Very Good! 哈哈，好的，小心点，千万别再翻车了。";
+    for (size_t i = 0; i < words.size(); i++)
+        ac.insert(words[i]);
+    ac.build_ac_automation();
+    std::vector<std::wstring> res = ac.parse_text(text);
+    for (size_t i = 0; i < res.size(); i++)
+//        std::wcout << res[i].c_str() << std::endl; // 中文乱码
+        std::cout << wstring_2_string(res[i]) << std::endl;
+}
+
+void test21()
+{
+    std::wstring w = L"";
+    std::wstring a = L"好的";
+    w += a[1];
+    std::wcout << w << std::endl;
+    std::wcout << a << std::endl;
+}
+
 int main()
 {
     //    test12_multi_thread();
-    test19();
+    test20();
     return 0;
 }

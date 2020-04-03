@@ -1,12 +1,11 @@
-TEMPLATE = app
-CONFIG += console c++11
+#TEMPLATE = app
+#CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
         main.cpp \
     kmp.cpp \
-    ac_test.cpp \
     ac_tree.cpp
 
 QMAKE_CXXFLAGS += -std=c++11
@@ -22,4 +21,5 @@ HEADERS += \
     tree.h \
     kmp.h \
     ac_test.h \
-    ac_tree.h
+    ac_tree.h \
+    temp.h

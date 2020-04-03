@@ -1,10 +1,5 @@
 #include "kmp.h"
 
-KMP::KMP()
-{
-
-}
-
 void KMP::getNext(std::string str, int *next)
 {
     int i = 0;

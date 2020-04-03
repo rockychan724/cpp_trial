@@ -4,30 +4,30 @@
 #include <cstdlib>
 #include <string>
 
-std::string wstring_2_string(std::wstring in)
-{
-    const wchar_t *pw = in.c_str();
-    std::string val = "";
-    if(!pw)
-    {
-        return val;
-    }
-    size_t size= wcslen(pw)*sizeof(wchar_t);
-    char *pc = NULL;
-    if(!(pc = (char*)malloc(size)))
-    {
-        return val;
-    }
-    size_t destlen = wcstombs(pc,pw,size);
-    /*转换不为空时，返回值为-1。如果为空，返回值0*/
-    if (destlen ==(size_t)(0))
-    {
-        return val;
-    }
-    val = pc;
-    delete pc;
-    return val;
-}
+//std::string wstring_2_string(std::wstring in)
+//{
+//    const wchar_t *pw = in.c_str();
+//    std::string val = "";
+//    if(!pw)
+//    {
+//        return val;
+//    }
+//    size_t size= wcslen(pw)*sizeof(wchar_t);
+//    char *pc = NULL;
+//    if(!(pc = (char*)malloc(size)))
+//    {
+//        return val;
+//    }
+//    size_t destlen = wcstombs(pc,pw,size);
+//    /*转换不为空时，返回值为-1。如果为空，返回值0*/
+//    if (destlen ==(size_t)(0))
+//    {
+//        return val;
+//    }
+//    val = pc;
+//    delete pc;
+//    return val;
+//}
 
 //std::wstring string_2_wstring(std::string in)
 //{
@@ -53,6 +53,20 @@ std::string wstring_2_string(std::wstring in)
 //    delete pw;
 //    return val;
 //}
+
+std::string wstring_2_string(const std::wstring ws) {
+    std::string strLocale = setlocale (LC_ALL, "");
+    const wchar_t *wchSrc = ws.c_str ();
+    size_t nDestSize = wcstombs (nullptr, wchSrc, 0) + 1;
+    char *chDest = new char[nDestSize];
+    memset(chDest, 0, nDestSize);
+    wcstombs (chDest, wchSrc, nDestSize);
+    std::string strResult = chDest;
+    delete[] chDest;
+    chDest = nullptr;
+    setlocale (LC_ALL, strLocale.c_str ());
+    return strResult;
+}
 
 std::wstring Utf82Unicode(const std::string& str) {
     std::wstring wstr = L"";

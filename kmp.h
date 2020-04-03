@@ -8,8 +8,6 @@
 class KMP
 {
 public:
-    KMP();
-
     void getNext(std::string str, int *next);
 
     bool match(std::string longStr, std::string shortStr, int *next);
