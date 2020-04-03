@@ -368,6 +368,7 @@ void test20()
 //    std::vector<std::wstring> res = ac.parse_text(L"yasherhs");
     std::vector<std::wstring> words = {L"好的", L"哈哈", L"小心", L"good", L"千万别翻车了"};
     std::wstring text = L"Very Good! 哈哈，好的，小心点，千万别再翻车了。";
+    ac.case_insensitive();
     for (size_t i = 0; i < words.size(); i++)
         ac.insert(words[i]);
     ac.build_ac_automation();
@@ -382,8 +383,17 @@ void test21()
     std::wstring w = L"";
     std::wstring a = L"好的";
     w += a[1];
-    std::wcout << w << std::endl;
-    std::wcout << a << std::endl;
+    std::cout << wstring_2_string(w) << std::endl;
+    std::cout << wstring_2_string(a) << std::endl;
+    std::wstring B = L"ABCDEF";
+    std::wstring b = L"zyx";
+//    std::cout << wstring_2_string(std::towlower(B[0])) << std::endl;
+//    std::cout << wstring_2_string(std::towupper(b[0])) << std::endl;
+    std::wstring d = L"AaBb";
+//    std::cout << char(std::tolower(d[3])) << std::endl;
+    std::cout << int(d[0]) << ", " << int(d[1]) << ", " << int(d[2]) << std::endl;
+    d[0] += 32;
+    std::cout << wstring_2_string(d) << std::endl;
 }
 
 int main()

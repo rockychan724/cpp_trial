@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <string>
 
+using namespace std;
+
 //std::string wstring_2_string(std::wstring in)
 //{
 //    const wchar_t *pw = in.c_str();

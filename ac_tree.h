@@ -19,10 +19,15 @@ private:
     };
     std::queue<std::shared_ptr<Node>> nodes_queue; // 节点队列，用于构造各个节点的失配指针
     std::shared_ptr<Node> root; // 头结点
+    bool case_sensitive;
 
     void init_node(std::shared_ptr<Node> node);
+
+    std::wstring case_transform(std::wstring src);
 public:
     AC_Tree();
+
+    void case_insensitive();
 
     void insert(std::wstring word);
 
