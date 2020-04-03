@@ -11,7 +11,7 @@
 #include "multi_thread.h"
 #include "tree.h"
 #include "kmp.h"
-#include "ac_tree.h"
+#include "ac_test.h"
 
 using namespace std;
 using namespace cv;

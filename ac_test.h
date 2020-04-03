@@ -1,12 +1,5 @@
-#ifndef AC_TREE_H
-#define AC_TREE_H
-
-
-class ac_tree
-{
-public:
-    ac_tree();
-};
+#ifndef AC_TEST_H
+#define AC_TEST_H
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -128,5 +121,5 @@ int main_()
     return 0;
 }
 
-#endif // AC_TREE_H
+#endif // AC_TEST_H
 

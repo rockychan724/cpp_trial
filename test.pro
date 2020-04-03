@@ -6,7 +6,7 @@ CONFIG -= qt
 SOURCES += \
         main.cpp \
     kmp.cpp \
-    ac_tree.cpp
+    ac_test.cpp
 
 QMAKE_CXXFLAGS += -std=c++11
 
@@ -20,4 +20,4 @@ HEADERS += \
     multi_thread.h \
     tree.h \
     kmp.h \
-    ac_tree.h
+    ac_test.h
