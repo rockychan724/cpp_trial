@@ -13,6 +13,7 @@
 #include "kmp.h"
 #include "ac_test.h"
 #include "ac_tree.h"
+#include "biginteger.h"
 
 using namespace std;
 using namespace cv;
@@ -399,6 +400,6 @@ void test21()
 int main()
 {
     //    test12_multi_thread();
-    test20();
+    test();
     return 0;
 }

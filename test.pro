@@ -1,5 +1,5 @@
-#TEMPLATE = app
-#CONFIG += console c++11
+TEMPLATE = app
+CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
@@ -22,4 +22,5 @@ HEADERS += \
     kmp.h \
     ac_test.h \
     ac_tree.h \
-    temp.h
+    temp.h \
+    biginteger.h
