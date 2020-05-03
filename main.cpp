@@ -14,6 +14,7 @@
 #include "ac_test.h"
 #include "ac_tree.h"
 #include "biginteger.h"
+#include "test_shared_ptr.h"
 
 using namespace std;
 using namespace cv;
@@ -397,9 +398,14 @@ void test21()
     std::cout << wstring_2_string(d) << std::endl;
 }
 
+void test22()
+{
+    test_shared_ptr();
+}
+
 int main()
 {
     //    test12_multi_thread();
-    test();
+    test22();
     return 0;
 }
