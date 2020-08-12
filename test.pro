@@ -24,4 +24,5 @@ HEADERS += \
     src/ac_tree.h \
     src/temp.h \
     src/biginteger.h \
-    src/test_shared_ptr.h
+    src/test_shared_ptr.h \
+    src/test.h
