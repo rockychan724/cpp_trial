@@ -4,9 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp \
-    kmp.cpp \
-    ac_tree.cpp
+    src/main.cpp \
+    src/kmp.cpp \
+    src/ac_tree.cpp
 
 QMAKE_CXXFLAGS += -std=c++11
 
@@ -16,12 +16,12 @@ LIBS += -L/usr/local/opencv4/lib -lopencv_core -lopencv_highgui -lopencv_imgcode
 LIBS += -lpthread
 
 HEADERS += \
-    func.h \
-    multi_thread.h \
-    tree.h \
-    kmp.h \
-    ac_test.h \
-    ac_tree.h \
-    temp.h \
-    biginteger.h \
-    test_shared_ptr.h
+    src/func.h \
+    src/multi_thread.h \
+    src/tree.h \
+    src/kmp.h \
+    src/ac_test.h \
+    src/ac_tree.h \
+    src/temp.h \
+    src/biginteger.h \
+    src/test_shared_ptr.h
