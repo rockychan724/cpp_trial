@@ -15,6 +15,8 @@
 #include "ac_tree.h"
 #include "biginteger.h"
 #include "test_shared_ptr.h"
+#include "test.h"
+#include "test_db_pp.h"
 
 using namespace std;
 using namespace cv;
@@ -129,7 +131,7 @@ void test5()
 void test6()
 {
     Mat test_image(200, 200, CV_8UC3, Scalar(0));
-    RotatedRect rRect1 = RotatedRect(Point2f(100,100), Size2f(100,50), 75);
+    RotatedRect rRect1 = RotatedRect(Point2f(50,100), Size2f(100,50), 75);
     RotatedRect rRect2 = RotatedRect(Point2f(80, 80), Size2f(100, 50), 75);
     //    RotatedRect rRect = rRect1 & rRect2;
     Point2f vertices[4];
@@ -138,11 +140,11 @@ void test6()
     {
         line(test_image, vertices[i], vertices[(i+1)%4], Scalar(255, 0, 0));
     }
-    rRect2.points(vertices);
-    for (int i = 0; i < 4; i++)
-    {
-        line(test_image, vertices[i], vertices[(i+1)%4], Scalar(255, 0, 0));
-    }
+//    rRect2.points(vertices);
+//    for (int i = 0; i < 4; i++)
+//    {
+//        line(test_image, vertices[i], vertices[(i+1)%4], Scalar(255, 0, 0));
+//    }
     //    rRect.points(vertices);
     //    for (int i = 0; i < 4; i++)
     //    {
@@ -150,15 +152,15 @@ void test6()
     //    }
     Rect rect1 = rRect1.boundingRect();
     rectangle(test_image, rect1, Scalar(0, 0, 255));
-    Rect rect2 = rRect2.boundingRect();
-    rectangle(test_image, rect2, Scalar(0, 0, 255));
-    Rect rect_1 = rect1 | rect2;
-    rectangle(test_image, rect_1, Scalar(0, 255, 0));
-    Rect rect_2 = rect1 & rect2;
-    rectangle(test_image, rect_2, Scalar(0, 255, 0));
+//    Rect rect2 = rRect2.boundingRect();
+//    rectangle(test_image, rect2, Scalar(0, 0, 255));
+//    Rect rect_1 = rect1 | rect2;
+//    rectangle(test_image, rect_1, Scalar(0, 255, 0));
+//    Rect rect_2 = rect1 & rect2;
+//    rectangle(test_image, rect_2, Scalar(0, 255, 0));
     imshow("test", test_image);
-    std::cout << rect_1.size() << " " << rect_2.size() << std::endl;
-    std::cout << rect_1.area() / rect_2.area() << std::endl;
+//    std::cout << rect_1.size() << " " << rect_2.size() << std::endl;
+//    std::cout << rect_1.area() / rect_2.area() << std::endl;
     waitKey();
 }
 
@@ -403,9 +405,31 @@ void test22()
     test_shared_ptr();
 }
 
+void test23_transform() {
+    test_transform();
+}
+
+void test24_opencv_fillPoly() {
+    Mat img(500, 500, CV_8U, Scalar(0));
+
+    Point root_points[1][4];
+    root_points[0][0] = Point(215,220);
+    root_points[0][1] = Point(460,225);
+    root_points[0][2] = Point(466,450);
+    root_points[0][3] = Point(235,465);
+
+    const Point* ppt[1] = {root_points[0]};
+    int npt[] = {4};
+//    polylines(img, ppt, npt, 1, 1, Scalar(255),1,8,0);
+//    imshow("Test", img);
+//    waitKey();
+    fillPoly(img, ppt, npt, 1, Scalar(255));
+    imshow("Test", img);
+    waitKey();
+}
+
 int main()
 {
-    //    test12_multi_thread();
-    test22();
+    test_db_pp();
     return 0;
 }
