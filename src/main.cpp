@@ -2,10 +2,10 @@
 // Created by chenlei on 2021/9/15.
 //
 
-#include <iostream>
+#include "other/algorithm_trial.h"
 
 int main() {
-    std::cout << "hello new world." << std::endl;
+    test_max_element();
     return 0;
 }
 
