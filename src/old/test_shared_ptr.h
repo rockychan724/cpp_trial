@@ -8,28 +8,26 @@
 #include <unistd.h>
 
 
-class Run
-{
+class Run {
 private:
     std::shared_ptr<std::string> sp;
     std::thread *thr;
 public:
-    Run(std::shared_ptr<std::string> &p)
-    {
+    Run(std::shared_ptr<std::string> &p) {
         this->sp = p;
-        thr = new std::thread([this]{this->print();});
+        thr = new std::thread([this] { this->print(); });
     }
-    ~Run()
-    {
+
+    ~Run() {
         delete thr;
         thr = nullptr;
     }
-    void set(std::shared_ptr<std::string> p)
-    {
+
+    void set(std::shared_ptr<std::string> p) {
         this->sp = p;
     }
-    void print()
-    {
+
+    void print() {
         while (true) {
             std::cout << "sp = " << this->sp << ", " << this->sp->data() << std::endl;
             sleep(1);
@@ -37,8 +35,7 @@ public:
     }
 };
 
-void test_shared_ptr()
-{
+void test_shared_ptr() {
     static std::shared_ptr<std::string> p(new std::string("aaa"));
     std::cout << "p = " << p << ", " << p->data() << std::endl;
     Run r(p);
@@ -50,8 +47,7 @@ void test_shared_ptr()
     exit(0);
 }
 
-void test_shared_ptr_old()
-{
+void test_shared_ptr_old() {
 //    std::string a("hhh");
 //    std::string *b = &a;
 //    std::shared_ptr<std::string> p;

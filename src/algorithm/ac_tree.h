@@ -7,11 +7,9 @@
 #include <queue>
 #include <vector>
 
-class AC_Tree
-{
+class AC_Tree {
 private:
-    struct Node
-    {
+    struct Node {
         std::wstring wstr; // 记录从根节点到当前节点的路径构成的字符序列
         int count; // 记录当前节点是否构成一个词语
         std::map<wchar_t, std::shared_ptr<Node>> next;
@@ -24,6 +22,7 @@ private:
     void init_node(std::shared_ptr<Node> node);
 
     std::wstring case_transform(std::wstring src);
+
 public:
     AC_Tree();
 

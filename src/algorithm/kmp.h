@@ -5,8 +5,7 @@
 #include <string>
 
 
-class KMP
-{
+class KMP {
 public:
     void getNext(std::string str, int *next);
 

@@ -5,7 +5,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-struct BiTree{
+struct BiTree {
     char c;
     BiTree *lchild;
     BiTree *rchild;
@@ -15,11 +15,11 @@ struct BiTree{
 void Build_(BiTree *root, char s[], int &i) {
     if (i >= strlen(s)) {
         root = NULL;
-    } else if(s[i] == '#') {
+    } else if (s[i] == '#') {
         i++;
         root = NULL;
     } else {
-        root = (BiTree *)malloc(sizeof(BiTree));
+        root = (BiTree *) malloc(sizeof(BiTree));
         root->c = s[i];
         i++;
         Build_(root->lchild, s, i);
@@ -28,7 +28,7 @@ void Build_(BiTree *root, char s[], int &i) {
 }
 
 void Inorder(BiTree *root) {
-    if(root == NULL) {
+    if (root == NULL) {
         return;
     }
     Inorder(root->lchild);

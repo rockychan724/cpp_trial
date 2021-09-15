@@ -8,13 +8,11 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 
-void DrawRotatedRectangle(cv::Mat &image, cv::RotatedRect rotatedRectangle, cv::Scalar color)
-{
+void DrawRotatedRectangle(cv::Mat &image, cv::RotatedRect rotatedRectangle, cv::Scalar color) {
     cv::Point2f vertices2f[4];
     rotatedRectangle.points(vertices2f);
     cv::Point root_points[1][4];
-    for (int i = 0; i < 4; ++i)
-    {
+    for (int i = 0; i < 4; ++i) {
         root_points[0][i] = vertices2f[i];
     }
     const cv::Point *ppt[1] = {root_points[0]};
@@ -36,7 +34,7 @@ void test_db_pp() {
     std::string line;
     std::vector<cv::Size> size(2);
     while (std::getline(ifs, line)) {
-        if (i < 2){
+        if (i < 2) {
             line = line.substr(line.find("(") + 1, line.find(")") - line.find("(") - 1);
             int index = line.find(",");
             std::string h = line.substr(0, index), w = line.substr(index + 1);
@@ -52,7 +50,7 @@ void test_db_pp() {
             }
             pred_map.push_back(pred_line);
         }
-        i ++;
+        i++;
     }
     ifs.close();
     std::cout << "i = " << i << std::endl;
@@ -61,8 +59,7 @@ void test_db_pp() {
     scales.y = (static_cast<float>(size[1].height)) / size[0].height;
     std::vector<cv::RotatedRect> boxes = db_pp.parse_output(pred_map, scales);
     cv::Mat img = cv::imread("/home/chenlei/Desktop/db_test_demo/test2.jpg");
-    for (auto rr : boxes)
-    {
+    for (auto rr : boxes) {
         std::vector<int> v = {0, 255, 0};
         cv::Scalar s{0, 0, 0};
         s[0] = v[0];

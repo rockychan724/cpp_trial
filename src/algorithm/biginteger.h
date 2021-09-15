@@ -3,6 +3,7 @@
 
 
 #include "bits/stdc++.h"
+
 using namespace std;
 
 class BigInteger {
@@ -97,13 +98,13 @@ public:
     }
 
     // 输出
-    friend ostream& operator<<(ostream &os, BigInteger num2) {
+    friend ostream &operator<<(ostream &os, BigInteger num2) {
         os << num2.n;
         return os;
     }
 
     // 输入
-    friend istream& operator>>(istream &is, BigInteger &num2) {
+    friend istream &operator>>(istream &is, BigInteger &num2) {
         is >> num2.n;
         return is;
     }
@@ -120,15 +121,13 @@ public:
         int minlen = n2;
         string result;
         int carry = 0;
-        for (int i = 0; i < minlen; i++)
-        {
+        for (int i = 0; i < minlen; i++) {
             int sum = nums1[--n1] - '0' + nums2[--n2] - '0' + carry;
             carry = sum / 10;
             int a = sum % 10;
             result.push_back(a + '0');
         }
-        for (int i = minlen; i < maxlen; i++)
-        {
+        for (int i = minlen; i < maxlen; i++) {
             int sum = nums1[--n1] - '0' + carry;
             carry = sum / 10;
             int a = sum % 10;
@@ -142,30 +141,22 @@ public:
         return result;
     }
 
-    string substract(string nums1, string nums2)
-    {
+    string substract(string nums1, string nums2) {
         string result;
         int n1 = nums1.size();
         int n2 = nums2.size();
 
         //判断符号为正负
         char sign = '+';
-        if (n1 < n2)
-        {
+        if (n1 < n2) {
             sign = '-';
             nums1.swap(nums2);
 
-        }
-        else if (n1 == n2)
-        {
-            for (int i = 0; i < n1; i++)
-            {
-                if (nums1[i] > nums2[i])
-                {
+        } else if (n1 == n2) {
+            for (int i = 0; i < n1; i++) {
+                if (nums1[i] > nums2[i]) {
                     break;
-                }
-                else if (nums1[i] < nums2[i])
-                {
+                } else if (nums1[i] < nums2[i]) {
                     sign = '-';
                     nums1.swap(nums2);
                     break;
@@ -179,49 +170,42 @@ public:
         n1 = nums1.size();
         n2 = nums2.size();
 
-        for (int i = 0; i < n2; i++)
-        {
-            int temp= nums1[i] - nums2[i] - borrow;
+        for (int i = 0; i < n2; i++) {
+            int temp = nums1[i] - nums2[i] - borrow;
             borrow = 0;
-            if (temp< 0)
-            {
-                temp= temp + 10;
+            if (temp < 0) {
+                temp = temp + 10;
                 borrow = 1;
             }
-            result.push_back(temp+ '0');
+            result.push_back(temp + '0');
         }
 
-        for (int i = n2; i < n1; i++)
-        {
+        for (int i = n2; i < n1; i++) {
             int r = nums1[i] - '0' - borrow;
             borrow = 0;
-            if (r < 0)
-            {
+            if (r < 0) {
                 r = r + 10;
                 borrow = 1;
             }
             result.push_back(r + '0');
         }
 
-        for (int i = n1 - 1; i >= 0; i--)
-        {
+        for (int i = n1 - 1; i >= 0; i--) {
             if (result[i] == '0')
                 result.erase(result.begin() + i);
             else
                 break;
         }
         reverse(result.begin(), result.end());
-        if (sign == '-')
-        {
+        if (sign == '-') {
             result.insert(result.begin(), '-');
         }
-       /* if(result=="")
-            result="0";*/
+        /* if(result=="")
+             result="0";*/
         return result;
     }
 
-    string multiply(string nums1, string nums2)
-    {
+    string multiply(string nums1, string nums2) {
         string result = "0";
         if (nums1 == "0" || nums2 == "0")
             return result;
@@ -234,11 +218,9 @@ public:
         reverse(nums1.begin(), nums1.end());
         reverse(nums2.begin(), nums2.end());
 
-        for (int i = 0; i < n1; i++)
-        {
+        for (int i = 0; i < n1; i++) {
             string str;
-            for (int j = 0; j < n2; j++)
-            {
+            for (int j = 0; j < n2; j++) {
                 int sum = (nums1[i] - '0') * (nums2[j] - '0') + carry;
                 carry = sum / 10;
                 int a = sum - carry * 10;
@@ -248,8 +230,7 @@ public:
                 str.push_back(carry + '0');
             carry = 0;
             reverse(str.begin(), str.end());
-            for (int k = 0; k < i; k++)
-            {
+            for (int k = 0; k < i; k++) {
                 str.push_back('0');
             }
             tmpResult.push_back(str);
@@ -257,19 +238,16 @@ public:
 
         int size = tmpResult.size();
 
-        for (int i = 0; i < size; i++)
-        {
+        for (int i = 0; i < size; i++) {
             result = addition(result, tmpResult[i]);
         }
         return result;
     }
 
-    string divide(string nums1, string nums2)
-    {
+    string divide(string nums1, string nums2) {
         string result;
         result = substract(nums1, nums2);
-        if (result[0] == '-')
-        {
+        if (result[0] == '-') {
             result = "0";
             return result;
         }
@@ -279,104 +257,88 @@ public:
         //stringstream stream;
         string dividend;
 
-        for (int j = 0; j < n1; j++)
-        {
+        for (int j = 0; j < n1; j++) {
             dividend.push_back(nums1[j]); //被除数
-    //从9到0，试探性的找商，当余数不为负数时，为当前位的值
-            for (int i = 9; i >= 0; i--)
-            {
+            //从9到0，试探性的找商，当余数不为负数时，为当前位的值
+            for (int i = 9; i >= 0; i--) {
                 //stream.str(""); //清空stream
                 //stream << i;
                 string s = to_string(i);
-                string ss= multiply(nums2, s);
+                string ss = multiply(nums2, s);
                 string remain = substract(dividend, ss);
 
-                if(remain[0] != '-')
-                {
-                    result.push_back(i+'0');
+                if (remain[0] != '-') {
+                    result.push_back(i + '0');
                     dividend = remain;
                     break;
                 }
             }
         }
-    //去掉商前面的零位
+        //去掉商前面的零位
         int size = result.size();
-        for(int i=0; i<size; i++)
-        {
-            if(result[0]=='0')
-            {
+        for (int i = 0; i < size; i++) {
+            if (result[0] == '0') {
                 result.erase(result.begin());
-            }
-            else
-            {
+            } else {
                 break;
             }
         }
-    //四舍五入
-       // cout<<dividend<<endl;
-       /*
-        string s = substract(multiply(dividend,"2"),nums2);
-        if(s[0] != '-')
-            {
-                result=addition(result,"1");
-                //printf("1\n");
-            }
-        //printf("%s\n",dividend);
-        */
+        //四舍五入
+        // cout<<dividend<<endl;
+        /*
+         string s = substract(multiply(dividend,"2"),nums2);
+         if(s[0] != '-')
+             {
+                 result=addition(result,"1");
+                 //printf("1\n");
+             }
+         //printf("%s\n",dividend);
+         */
 
         return result;
     }
 
-    int compare(string str1,string str2,int pos)
-    {
-        int len1=str1.length();
-        int len2=str2.length();
-        if(len2>len1+pos) return 0;
-        if(len2<len1+pos) return 1;
+    int compare(string str1, string str2, int pos) {
+        int len1 = str1.length();
+        int len2 = str2.length();
+        if (len2 > len1 + pos) return 0;
+        if (len2 < len1 + pos) return 1;
         int i;
-        for(i=0; i<len2; i++)
-        {
-            if(str1[i]>str2[i]) return 1;
-            if(str1[i]<str2[i]) return 0;
+        for (i = 0; i < len2; i++) {
+            if (str1[i] > str2[i]) return 1;
+            if (str1[i] < str2[i]) return 0;
         }
         return 0;
     }
 
     string sqrtlarge(string str)        //大数开方
     {
-        int len=str.length();
-        string str1="";
-        string strresult="";
-        int i,j;
+        int len = str.length();
+        string str1 = "";
+        string strresult = "";
+        int i, j;
 
-        if(len%2==0)
-        {
-            for(i=0; i<len/2; i++)
-                for(j=0; j<10; j++)
-                {
-                    str1=strresult;
-                    str1+=(j+'0');
-                    if(compare(multiply(str1,str1),str,2*(len/2-i-1))==1)
-                    {
-                        strresult+=(j-1+'0');
+        if (len % 2 == 0) {
+            for (i = 0; i < len / 2; i++)
+                for (j = 0; j < 10; j++) {
+                    str1 = strresult;
+                    str1 += (j + '0');
+                    if (compare(multiply(str1, str1), str, 2 * (len / 2 - i - 1)) == 1) {
+                        strresult += (j - 1 + '0');
                         break;
                     }
-                    if(j==9) strresult+='9';
+                    if (j == 9) strresult += '9';
                 }
-        }
-        else
-        {
-            for(i=0; i<len/2+1; i++)
-                for(j=0; j<10; j++)
-                {
-                    str1=strresult;
-                    str1+=(j+'0');
-                    if(compare(multiply(str1,str1),str,2*(len/2-i))==1)
-                    {
-                        strresult+=(j-1+'0');
+        } else {
+            for (i = 0; i < len / 2 + 1; i++)
+                for (j = 0; j < 10; j++) {
+                    str1 = strresult;
+                    str1 += (j + '0');
+                    if (compare(multiply(str1, str1), str, 2 * (len / 2 - i)) == 1) {
+                        strresult += (j - 1 + '0');
                         break;
                     }
-                    if(j==9) strresult+='9';
+                    if (j == 9) strresult += '9';
                 }
         }
         return strresult;
@@ -399,7 +361,7 @@ public:
             for (int i = 0; i < a.length(); i++) {
                 if (a[i] < b[i]) {
                     return -1;
-                } else if(a[i] > b[i]) {
+                } else if (a[i] > b[i]) {
                     return 1;
                 }
             }
@@ -423,9 +385,8 @@ ll mul(ll a, ll b, ll m)
 {
     ll ans = zero;
     a = a % m;
-    while(b > zero)
-    {
-        if((b % two) == one) // 判断奇偶性
+    while (b > zero) {
+        if ((b % two) == one) // 判断奇偶性
             ans = (ans + a) % m;
         b = b / two;
         a = (a + a) % m;
@@ -439,9 +400,8 @@ ll pow(ll a, ll b, ll m)
 {
     ll ans = one;
     a = a % m;
-    while(b > zero)
-    {
-        if((b % two) == one)
+    while (b > zero) {
+        if ((b % two) == one)
             ans = mul(a, ans, m);
         b = b / two;
         a = mul(a, a, m);
@@ -449,30 +409,30 @@ ll pow(ll a, ll b, ll m)
     ans = ans % m;
     return ans;
 }
+
 bool Miller_Rabin(ll n, int repeat)//n是测试的大数，repeat是测试重复次数
 {
-    if(n < two) return false;
-    if(n == two || n == three)return true;//特判
-    if(n % two == zero || n % three == zero)return false;//偶数和1
+    if (n < two) return false;
+    if (n == two || n == three)return true;//特判
+    if (n % two == zero || n % three == zero)return false;//偶数和1
 
     //将n-1分解成d*2^s
     ll d = n - one;
     ll s = zero;
-    while((d % two) == zero) s = s + one, d = d / two;
-    srand((unsigned)time(NULL));
-    for(int i = 0; i < repeat; i++)//重复repeat次
+    while ((d % two) == zero) s = s + one, d = d / two;
+    srand((unsigned) time(NULL));
+    for (int i = 0; i < repeat; i++)//重复repeat次
     {
         BigInteger r(rand());
         ll a = r % (n - three) + two;//取一个随机数,[2,n-1)
         ll x = pow(a, d, n);
         ll y = 0;
-        for(ll j = 0; j < s; j = j + 1)
-        {
+        for (ll j = 0; j < s; j = j + 1) {
             y = mul(x, x, n);
-            if(y == one && x != one && x != (n - one)) return false;
+            if (y == one && x != one && x != (n - one)) return false;
             x = y;
         }
-        if(y != 1) return false;//费马小定理
+        if (y != 1) return false;//费马小定理
     }
     return true;
 }
