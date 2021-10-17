@@ -20,4 +20,5 @@ target_link_libraries(
         cpp_trial
         -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc
         -lpthread
+        -ltbb
 )
