@@ -2,8 +2,8 @@
 // Created by chenlei on 2021/9/25.
 //
 
-#ifndef CPP_TRIAL_CLASS_TRIL_H
-#define CPP_TRIAL_CLASS_TRIL_H
+#ifndef CPP_TRIAL_CLASS_TRIAL_H
+#define CPP_TRIAL_CLASS_TRIAL_H
 
 #include <iostream>
 
@@ -68,4 +68,4 @@ void test_class_inherit() {
     C test = C();
 }
 
-#endif //CPP_TRIAL_CLASS_TRIL_H
+#endif //CPP_TRIAL_CLASS_TRIAL_H

@@ -2,9 +2,10 @@
 // Created by chenlei on 2021/9/15.
 //
 
+#include "opencv/some_trial.h"
 #include "other/pointer.h"
 #include "other/algorithm_trial.h"
-#include "other/class_tril.h"
+#include "other/class_trial.h"
 #include "other/stream_trial.h"
 #include "other/tbb_trial.h"
 #include "other/vector_trial.h"
@@ -23,7 +24,10 @@ int main() {
     // test_class_inherit();
     // test_fstream();
     // test_tbb_vector();
-    test_vector();
+    // test_vector();
+    // test_cv_point();
+    // test_glob();
+    test_stream();
     return 0;
 }
 
