@@ -27,7 +27,8 @@ int main() {
     // test_vector();
     // test_cv_point();
     // test_glob();
-    test_stream();
+    // test_stream();
+    test_rotated_rect();
     return 0;
 }
 
