@@ -40,9 +40,32 @@ static void test_rotated_rect() {
     transpose(test_image, dst_image);
     Mat flipped_image;
     flip(dst_image, flipped_image, 0);
+
+    cv::copyMakeBorder(test_image, test_image, 20, 2, 3, 40, cv::BORDER_CONSTANT, cv::Scalar(255, 255, 255));
     imshow("rectangles", test_image);
     imshow("transpose", dst_image);
     imshow("flip", flipped_image);
+    waitKey(0);
+}
+
+static void test_minAreaRect() {
+    Mat test_image(200, 200, CV_8UC3, Scalar(0));
+    std::vector<Point2f> points = {{0, 10}, {150, 10}, {50, 120}, {10, 150}};
+    cv::RotatedRect rRect = cv::minAreaRect(points);
+    Point2f vertices[4];
+    rRect.points(vertices);
+
+    for (int i = 0; i < 4; i++) {
+        line(test_image, vertices[i], vertices[(i+1)%4], Scalar(0,255,0));
+    }
+
+    Rect brect = rRect.boundingRect();
+    rectangle(test_image, brect, Scalar(255,0,0), 2);
+    cv::Mat tmp_img;
+    test_image(brect).copyTo(tmp_img);
+
+    imshow("rectangles", test_image);
+    imshow("rect", tmp_img);
     waitKey(0);
 }
 

@@ -6,6 +6,7 @@
 #include "other/pointer.h"
 #include "other/algorithm_trial.h"
 #include "other/class_trial.h"
+#include "other/shared_ptr_trial.h"
 #include "other/stream_trial.h"
 #include "other/tbb_trial.h"
 #include "other/vector_trial.h"
@@ -28,7 +29,9 @@ int main() {
     // test_cv_point();
     // test_glob();
     // test_stream();
-    test_rotated_rect();
+    // test_rotated_rect();
+    // test_minAreaRect();
+    test_shared_ptr();
     return 0;
 }
 
