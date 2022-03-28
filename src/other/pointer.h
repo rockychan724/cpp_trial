@@ -33,7 +33,7 @@ private:
 
 
 void test_datatype() {
-    std::cout << "void: " << sizeof(void) << std::endl;
+    // std::cout << "void: " << sizeof(void) << std::endl;
     std::cout << "void *: " << sizeof(void *) << std::endl;
     std::cout << "int *: " << sizeof(int *) << std::endl;
     std::cout << "float *: " << sizeof(float *) << std::endl;
