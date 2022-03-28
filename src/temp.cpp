@@ -356,7 +356,7 @@ class BB : public AA {
     // void m() {}
 };
 
-int main() {
+int main4() {
     // BB *bb = new BB;
     // AA *aa = dynamic_cast<AA *> (bb);//基类指针向下转换为派生类指针  // AA *aa = bb;
 
@@ -367,27 +367,70 @@ int main() {
     return 0;
 }
 
-class A3
-{
-     // ......
+class A3 {
+    // ......
 };
-class B2 : public A3
-{
-     // ......
+
+class B2 : public A3 {
+    // ......
 };
+
 // class C2 : public B2
 // {
 //      // ......
 // };
-int main5()
-{
-     // C2 *pC = new C2;
-     // B2 *pB = dynamic_cast<B2 *>(pC); // OK
-     B2 *pB = new B2;
-     A3 *pA = dynamic_cast<A3 *>(pB); // OK
-     if (pB == nullptr)
+int main5() {
+    // C2 *pC = new C2;
+    // B2 *pB = dynamic_cast<B2 *>(pC); // OK
+    B2 *pB = new B2;
+    A3 *pA = dynamic_cast<A3 *>(pB); // OK
+    if (pB == nullptr)
         std::cout << "nullptr" << std::endl;
-     if (pA == nullptr)
+    if (pA == nullptr)
         std::cout << "nullptr" << std::endl;
+    return 0;
+}
+
+int main6() {
+    std::vector<bool> a(100);
+    std::for_each(a.begin(), a.end(), [](int i) { std::cout << i << ","; });
+    std::cout << std::endl;
+    int *b = new int[100];
+    std::for_each(b, b + 100, [](int i) { std::cout << i << ","; });
+    std::cout << std::endl;
+    for (int i = 0; i < 10; i++) {
+        static int c = 0;
+        c++;
+        std::cout << c << std::endl;
+    }
+    return 0;
+}
+
+class CC {
+public:
+    CC(int _v) : v(_v) {
+        std::cout << "Construct, v = " << v << "\n";
+    }
+
+    ~CC() {
+        std::cout << "Destruct, v = " << v << "\n";
+    }
+
+    int v = 0;
+};
+
+CC test_value_pass(CC c) {
+    CC d(0);
+    d.v = c.v + 1;
+    std::cout << "d\n";
+    return d;
+    // return c;
+}
+
+int main() {
+    CC c(0);
+    std::cout << "c\n";
+    auto res = test_value_pass(c);
+    std::cout << res.v << std::endl;
     return 0;
 }

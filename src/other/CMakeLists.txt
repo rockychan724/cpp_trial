@@ -1,0 +1,1 @@
+add_executable(new_delete_trial new_delete_trial.cpp)
