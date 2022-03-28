@@ -5,6 +5,7 @@
 #ifndef CPP_TRIAL_TEST_H
 #define CPP_TRIAL_TEST_H
 
+#include "Python.h"
 
 class test {
 
