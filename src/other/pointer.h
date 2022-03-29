@@ -43,6 +43,14 @@ void test_datatype() {
     std::cout << "A: " << sizeof(AA) << std::endl;
     std::cout << "a: " << sizeof(a) << std::endl;
     std::cout << "b: " << sizeof(b) << std::endl;
+    std::cout << "char: " << sizeof(char) << std::endl;
+    std::cout << "wchar_t: " << sizeof(wchar_t) << std::endl;
+    std::cout << "short: " << sizeof(short) << std::endl;
+    std::cout << "short int: " << sizeof(short int) << std::endl;
+    std::cout << "int: " << sizeof(int) << std::endl;
+    std::cout << "long int: " << sizeof(long int) << std::endl;
+    std::cout << "long long: " << sizeof(long long) << std::endl;
+    std::cout << "long long int: " << sizeof(long long int) << std::endl;
 }
 
 #endif //CPP_TRIAL_POINTER_H

@@ -299,7 +299,7 @@ class ClxDerived : public ClxBase {
 public :
     ClxDerived() {};
 
-    virtual ~ ClxDerived() { cout << " Output from the destructor of class ClxDerived! " << endl; };
+    ~ ClxDerived() { cout << " Output from the destructor of class ClxDerived! " << endl; };
 
     void DoSomething() { cout << " Do something in class ClxDerived! " << endl; };
 };
@@ -320,9 +320,9 @@ public:
 };
 
 int main3() {
-    // ClxBase *pTest = new ClxDerived;
-    // pTest->DoSomething();
-    // delete pTest;
+    ClxBase *pTest = new ClxDerived;
+    pTest->DoSomething();
+    delete pTest;
     Point p;
     std::cout << sizeof p << std::endl;
     std::cout << &p << std::endl;
@@ -427,10 +427,40 @@ CC test_value_pass(CC c) {
     // return c;
 }
 
-int main() {
+int main7() {
     CC c(0);
     std::cout << "c\n";
     auto res = test_value_pass(c);
     std::cout << res.v << std::endl;
+    return 0;
+}
+
+class Base2 {
+public:
+    int m_a;
+public:
+    Base2(int a) : m_a(a) {
+        std::cout << "Base obj constructed !" << std::endl;
+    }
+};
+
+class Derived : public Base2 {
+public:
+    int m_b;
+    int m_c;
+    int m_d;
+public:
+    Derived(int a, int c) : m_c(c), m_b(m_a + m_c), Base2(a) {
+        std::cout << "m_b = " << m_b << std::endl;
+        std::cout << "Derived obj constructed !" << std::endl;
+    }
+};
+
+int main() {
+    Derived d(1, 10);
+    std::cout << d.m_a << std::endl; // 1
+    std::cout << d.m_b << std::endl; // 未初始化
+    std::cout << d.m_c << std::endl; // 10
+    std::cout << d.m_d << std::endl; // 1
     return 0;
 }

@@ -17,14 +17,14 @@ void test_1_shift() {
 }
 
 int main() {
-    test_max_element();
+    // test_max_element();
     test_datatype();
-    test_1_shift();
-    test_class_inherit();
-    test_fstream();
-    test_vector();
-    test_stream();
-    test_shared_ptr();
+    // test_1_shift();
+    // test_class_inherit();
+    // test_fstream();
+    // test_vector();
+    // test_stream();
+    // test_shared_ptr();
     return 0;
 }
 
