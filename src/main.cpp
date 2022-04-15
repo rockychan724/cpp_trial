@@ -7,7 +7,6 @@
 #include "other/class_trial.h"
 #include "other/shared_ptr_trial.h"
 #include "other/stream_trial.h"
-#include "other/vector_trial.h"
 
 void test_1_shift() {
     std::cout << (1 << 0) << std::endl;
@@ -22,7 +21,6 @@ int main() {
     // test_1_shift();
     // test_class_inherit();
     // test_fstream();
-    // test_vector();
     // test_stream();
     // test_shared_ptr();
     return 0;
