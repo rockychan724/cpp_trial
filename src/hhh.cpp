@@ -234,14 +234,35 @@ int main5() {
 // }
 
 class AAA {
-// public:
-//     AAA() {
-//         std::cout << "A" << std::endl;
-//     }
-//
-//     ~AAA() {
-//         std::cout << "~A" << std::endl;
-//     }
+public:
+    AAA() {
+        std::cout << "A" << std::endl;
+    }
+
+    ~AAA() {
+        std::cout << "~A" << std::endl;
+    }
+
+    void print() {
+        std::cout << "AAA" << std::endl;
+    }
+
+    virtual void test() {
+        std::cout << "TEST" << std::endl;
+    }
+
+    virtual void test1() {
+        std::cout << "TEST" << std::endl;
+    }
+
+    virtual void test2() {
+        std::cout << "TEST" << std::endl;
+    }
+
+// private:
+    char b;
+    int a;
+    char c;
 };
 
 
@@ -259,7 +280,8 @@ int main() {
 
     AAA aa[5];
     AAA bb;
-    std::cout << sizeof(bb) << std::endl;
+    std::cout << sizeof(aa) << "," << sizeof(bb) << std::endl;
+    std::cout << &bb << "," << (void *)&(bb.b) << "," << &(bb.a) << ", " << (void *)&(bb.c) << std::endl;
 
     union un {
         char a;
@@ -272,6 +294,21 @@ int main() {
     } else {
         cout << "small" << endl;
     }
+
+    int i = 0;
+    long li = 0;
+    long long ll = 0;
+    std::cout << sizeof(i) << "," << sizeof(li) << "," << sizeof(ll) << std::endl;
+
+    bool boo;
+    std::cout << sizeof(boo) << std::endl;
+
+    std::string s("abcd");
+    std::cout << "size:" << s.size() << ",length:" << s.length() << std::endl;
+    std::string s1;
+    std::cout << sizeof(s1) << std::endl;
+    std::cout << sizeof(s) << std::endl;
+    std::cout << sizeof("abcd") << std::endl;
     return 0;
 }
 
