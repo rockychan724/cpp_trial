@@ -72,7 +72,6 @@ Thumbs.db
 *.exe
 
 # IDE
-.vscode
 .idea
 
 # build

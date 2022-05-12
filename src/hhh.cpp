@@ -266,7 +266,7 @@ public:
 };
 
 
-int main() {
+int main(int argc, char *arg[]) {
     // std::vector<std::string> a;
     // a.push_back("100000");
     // // a.resize(1);
@@ -309,6 +309,14 @@ int main() {
     std::cout << sizeof(s1) << std::endl;
     std::cout << sizeof(s) << std::endl;
     std::cout << sizeof("abcd") << std::endl;
+
+    // test arguments
+    if (argc == 0) {
+        std::cout << "None parameter.\n";
+    } else {
+        for (int i = 0; i < argc; i++)
+            std::cout << arg[i] << std::endl;
+    }
     return 0;
 }
 
