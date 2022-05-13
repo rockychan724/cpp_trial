@@ -4,15 +4,24 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        // debug with cmake
         {
-            "name": "(gdb) 通用",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/${fileBasenameNoExtension}",
-            "args": [],
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [
+                "hello",
+                "world"
+            ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "environment": [
+                {
+                    "name": "PATH",
+                    "value": "${env:PATH}:${command:cmake.getLaunchTargetDirectory}"
+                }
+            ],
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -33,7 +42,12 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/hhh",
-            "args": ["hello", "world", "--help", "ok"],
+            "args": [
+                "hello",
+                "world",
+                "--help",
+                "ok"
+            ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

@@ -14,4 +14,9 @@ void test_max_element() {
     std::cout << "max index = " << max_index << std::endl;
 }
 
+int main() {
+    test_max_element();
+    return 0;
+}
+
 #endif //CPP_TRIAL_ALGORITHM_TRIAL_H

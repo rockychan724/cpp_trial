@@ -9,6 +9,8 @@
 #include <iostream>
 #include <sstream>
 
+using namespace std;
+
 static void test_fstream() {
     // std::ofstream ofs("./test.txt");
     // ofs << "hello" << endl;
@@ -43,6 +45,11 @@ static void test_stream() {
 
     outfile.close();
 
+}
+
+int main() {
+
+    return 0;
 }
 
 #endif //CPP_TRIAL_STREAM_TRIAL_H

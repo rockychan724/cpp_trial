@@ -68,4 +68,9 @@ void test_class_inherit() {
     C test = C();
 }
 
+int main() {
+    test_class_inherit();
+    return 0;
+}
+
 #endif //CPP_TRIAL_CLASS_TRIAL_H

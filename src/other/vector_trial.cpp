@@ -82,6 +82,18 @@ int main() {
     bool arr2[10] = {true};
     print_vector(arr1);
     print_vector(arr2);
+
+    std::vector<std::string> v_s = {10, "abc"};
+    print_vector(v_s);
+    v_s = {10, "efg"};
+    print_vector(v_s);
+
+    int size = 10;
+    int arr[size];
+    // print_vector(arr);
+    for (auto &i: arr)
+        std::cout << i << ",";
+    std::cout << std::endl;
     return 0;
 }
 

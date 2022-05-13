@@ -53,4 +53,9 @@ void test_datatype() {
     std::cout << "long long int: " << sizeof(long long int) << std::endl;
 }
 
+int main() {
+    test_datatype();
+    return 0;
+}
+
 #endif //CPP_TRIAL_POINTER_H

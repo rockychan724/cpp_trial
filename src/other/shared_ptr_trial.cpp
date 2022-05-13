@@ -27,4 +27,9 @@ static void test_shared_ptr() {
     ptr->print();
 }
 
+int main() {
+    test_shared_ptr();
+    return 0;
+}
+
 #endif //CPP_TRIAL_SHARED_PTR_TRIAL_H

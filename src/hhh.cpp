@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 
 class Base2 {
 public:
@@ -233,40 +234,8 @@ int main5() {
 //     return 0;
 // }
 
-class AAA {
-public:
-    AAA() {
-        std::cout << "A" << std::endl;
-    }
 
-    ~AAA() {
-        std::cout << "~A" << std::endl;
-    }
-
-    void print() {
-        std::cout << "AAA" << std::endl;
-    }
-
-    virtual void test() {
-        std::cout << "TEST" << std::endl;
-    }
-
-    virtual void test1() {
-        std::cout << "TEST" << std::endl;
-    }
-
-    virtual void test2() {
-        std::cout << "TEST" << std::endl;
-    }
-
-// private:
-    char b;
-    int a;
-    char c;
-};
-
-
-int main(int argc, char *arg[]) {
+int main6(int argc, char *arg[]) {
     // std::vector<std::string> a;
     // a.push_back("100000");
     // // a.resize(1);
@@ -277,11 +246,6 @@ int main(int argc, char *arg[]) {
     char a[] = "Hello";
     char *p = a;
     std::cout << sizeof(p) << "," << strlen(p) << "," << sizeof(a) << std::endl;
-
-    AAA aa[5];
-    AAA bb;
-    std::cout << sizeof(aa) << "," << sizeof(bb) << std::endl;
-    std::cout << &bb << "," << (void *)&(bb.b) << "," << &(bb.a) << ", " << (void *)&(bb.c) << std::endl;
 
     union un {
         char a;
@@ -317,6 +281,23 @@ int main(int argc, char *arg[]) {
         for (int i = 0; i < argc; i++)
             std::cout << arg[i] << std::endl;
     }
+
+    // test mod
+    std::cout << 21%(-8) << std::endl;
+    std::cout << (-21)%(-5) << std::endl;
+
+    return 0;
+}
+
+void test(const std::map<int, int> &m) {
+    std::map<int, int> & mm = const_cast<std::map<int, int> &>(m);
+    mm[2] = 0;
+}
+
+int main() {
+    std::map<int, int> m = {{2, 5}, {4, 6}};
+    test(m);
+    std::cout << m[2] << std::endl;
     return 0;
 }
 
