@@ -72,13 +72,13 @@ void test_returnval() {
 }
 
 bool fun(const int *a, const int *b) {
-    
+    return true;
 }
 
 typedef bool func(const int *a, const int *b);
 
 int test_fun(int a, func f) {
-
+    return 0;
 }
 
 void print_array(int arr[4]) {
@@ -97,7 +97,7 @@ int main() {
     // int *p = test_pointer();
     // std::cout << p[2] << std::endl;
     
-    // test_returnval();
-    test_array_parameter();
+    test_returnval();
+    // test_array_parameter();
     return 0;
 }
