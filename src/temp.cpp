@@ -196,7 +196,7 @@ public:
     ~children() { std::cout << "~children()" << std::endl; }
 
 public:
-    std::shared_ptr<parent> parent;
+    std::shared_ptr<parent> pa;
 };
 
 void Verify() {
@@ -204,7 +204,7 @@ void Verify() {
     std::shared_ptr<children> c(new children);
 
     p->child = c;
-    c->parent = p;
+    c->pa = p;
     p->child.reset();
 }
 
