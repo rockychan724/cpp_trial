@@ -5,22 +5,25 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-#include <string>
 
 class A {
 public:
     A() {
         val = 1;
-        std::cout << "a";
+        std::cout << "Default construct: " << val << std::endl;
     }
 
     A(int _val) : val(_val) {
-        std::cout << "a";
+        std::cout << "Parameter construct: " << val << std::endl;
+    }
+
+    A(const A &a) : val(a.val) {
+        std::cout << "Copy construct: " << val << std::endl;
     }
 
     ~A() {
         val = -1;
-        std::cout << "~";
+        std::cout << "~,";
     }
 
     friend std::ostream &operator<<(std::ostream &ost, const A &a) {
@@ -32,53 +35,97 @@ private:
     int val, b, c;
 };
 
+class B {
+public:
+    B() : val(new int(1)) {
+        std::cout << "Default construct: " << *val << std::endl;
+    }
+
+    B(int b) : val(new int(b)) {
+        std::cout << "Parameter construct: " << *val << std::endl;
+    }
+
+    B(const B &b) : val(new int(*b.val)) {
+        std::cout << "Copy construct: " << *val << std::endl;
+    }
+
+    B(B &&b) : val(b.val) {
+        b.val = nullptr;
+        std::cout << "Move construct: " << *val << std::endl;
+    }
+
+    ~B() {
+        delete val;
+        val = nullptr;
+        std::cout << "~,";
+    }
+
+private:
+    int *val;
+};
+
+int arr1[10];
+
 template<typename T>
-void print_vector(const T &a) {
+static void print_vector(const T &a) {
     for (const auto &i : a)
         std::cout << i << ",";
     std::cout << "\b\n";
 }
 
-class B {
-public:
-    B(int a) {
-
-    }
-};
-
-int arr1[10];
-
-int main() {
+void test_resize_reserve() {
     std::vector<A> a;
+    std::cout << "====== resize to 5 ======\n";
+    a.resize(5);
+    std::cout << "capacity: " << a.capacity() << std::endl;  // 5
     print_vector(a);
+    /**
+     * 注意体会是否执行 a.reserve(10) 的区别
+     */
+    // a.reserve(10);
+    // std::cout << "capacity: " << a.capacity() << std::endl;  // 10
     std::cout << "====== resize to 10 ======\n";
-    a.resize(10);
-    std::cout << std::endl;
+    a.resize(10, 3);
+    std::cout << "capacity: " << a.capacity() << std::endl;  // 10
     print_vector(a);
-    std::cout << "====== resize to 20 ======\n";
-    a.resize(25, 3);
-    std::cout << std::endl;
+    a.push_back(4);
+    std::cout << "capacity:" << a.capacity() << std::endl;  // 20
     print_vector(a);
-    std::cout << "capacity:" << a.capacity() << std::endl;
-    a.push_back(3);
-    std::cout << "capacity:" << a.capacity() << std::endl;
     std::cout << "====== resize to 5 ======\n";
     a.resize(5, 2);
-    std::cout << std::endl;
+    std::cout << "capacity:" << a.capacity() << std::endl;  // 20
     print_vector(a);
-    std::cout << "capacity:" << a.capacity() << std::endl;
     std::cout << a[6] << std::endl;
+}
+
+void test_emplace_back() {
+    std::vector<B> b;
+    b.reserve(10);
+    std::cout << "push left value:" << std::endl;
+    B temp_b1 = 2, temp_b2 = 3;
+    b.push_back(temp_b1);
+    b.emplace_back(temp_b2);
+    std::cout << "push right value:" << std::endl;
+    b.push_back(4);
+    b.emplace_back(5);
+
+}
+
+int main() {
+    std::cout << "\n*** test resize and reserve" << std::endl;
+    test_resize_reserve();
+    std::cout << "\n*** test resize and reserve" << std::endl;
+    test_emplace_back();
 
     {
-        std::vector<A> b(3, 10);
-        // b.push_back(A(7));
-        // b.push_back(8);
-        b.clear();
+        std::vector<A> aa(3, 10);
+        // aa.push_back(A(7));
+        // aa.push_back(8);
+        aa.clear();
         std::cout << "clear over.\n";
-        std::cout << b.capacity() << std::endl;
+        std::cout << aa.capacity() << std::endl;
     }
     std::cout << "Over!\n";
-    // B bb[10];  // 报错
     bool arr2[10] = {true};
     print_vector(arr1);
     print_vector(arr2);
@@ -95,14 +142,4 @@ int main() {
         std::cout << i << ",";
     std::cout << std::endl;
     return 0;
-}
-
-static void test_vector() {
-    std::vector<int> a = {1, 2, 3, 4, 5, 6};
-    std::vector<int> b(a.begin(), a.begin() + 5);
-    std::vector<int> c(a.begin(), a.end());
-    std::for_each(b.begin(), b.end(), [](int bb) { std::cout << bb << " "; });
-    std::cout << std::endl;
-    std::for_each(c.begin(), c.end(), [](int cc) { std::cout << cc << " "; });
-    std::cout << std::endl;
 }
