@@ -1,6 +1,7 @@
 add_executable(algorithm_trial algorithm_trial.cpp)
 add_executable(array_trial array_trial.cpp)
 add_executable(class_trial class_trial.cpp)
+add_executable(copy_trial copy_trial.cpp)
 add_executable(data_bss_trial data_bss_trial.cpp)
 add_executable(exception_trial exception_trial.cpp)
 add_executable(function_trial function_trial.cpp)

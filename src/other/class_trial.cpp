@@ -74,7 +74,7 @@ public:
         food = 10;
         weight = 20;
     }
-    
+
     void eat() {
         print_animal(*this);
         food--;
@@ -112,15 +112,15 @@ struct Base1 {
 };
 
 // struct默认继承为public，而class的默认继承为private
-struct Base2: Base1 {
-    
+struct Base2 : Base1 {
+
 };
 
 class People {
 public:
     // People() {}
 
-    People(std::string _name="Zhangsan"): name(_name) {}
+    People(std::string _name = "Zhangsan") : name(_name) {}
 
     void clear(const Animal &animal) {
         std::cout << "food: " << animal.food << ", weight: " << animal.weight << std::endl;
@@ -142,15 +142,15 @@ public:
         std::cout << "Default construct.\n";
     }
 
-    explicit Sales_data(int _num): num(_num) {
+    explicit Sales_data(int _num) : num(_num) {
         std::cout << "Construct from int.\n";
     }
 
-    Sales_data(const std::string &_name): name(_name) {
+    Sales_data(const std::string &_name) : name(_name) {
         std::cout << "Construct from std::string.\n";
     }
 
-    Sales_data(const std::string &_name, int _num): name(_name), num(_num) {
+    Sales_data(const std::string &_name, int _num) : name(_name), num(_num) {
         std::cout << "Construct from std::string and int.\n";
     }
 
@@ -177,15 +177,15 @@ void test_init() {
     Sales_data sd1("hhh", 1);
     Sales_data sd2{"hhh", 1};
     Sales_data sd3 = {"hhh", 1};
-    sd3 = {"aaa", 2};
+    sd3 = {"aaa", 2};  // 先将 {"aaa", 2} 隐式转化为 Sales 临时对象，再将临时对象赋值给 sd3
 }
 
 int main() {
-    // test_class_inherit();
+    test_class_inherit();
     test_class_Animal();
 
-    // Base2 b;
-    // std::cout << b.a << std::endl;
+    Base2 b;
+    std::cout << b.a << std::endl;
 
     People p;
     std::string &name = p.get_name();

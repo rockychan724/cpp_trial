@@ -114,32 +114,45 @@ void test_emplace_back() {
 int main() {
     std::cout << "\n*** test resize and reserve" << std::endl;
     test_resize_reserve();
-    std::cout << "\n*** test resize and reserve" << std::endl;
+    std::cout << "\n*** test push_back and emplace_back" << std::endl;
     test_emplace_back();
 
-    {
-        std::vector<A> aa(3, 10);
-        // aa.push_back(A(7));
-        // aa.push_back(8);
-        aa.clear();
-        std::cout << "clear over.\n";
-        std::cout << aa.capacity() << std::endl;
-    }
-    std::cout << "Over!\n";
-    bool arr2[10] = {true};
-    print_vector(arr1);
-    print_vector(arr2);
-
-    std::vector<std::string> v_s = {10, "abc"};
-    print_vector(v_s);
-    v_s = {10, "efg"};
-    print_vector(v_s);
-
-    int size = 10;
-    int arr[size];
-    // print_vector(arr);
-    for (auto &i: arr)
-        std::cout << i << ",";
-    std::cout << std::endl;
+    // {
+    //     std::vector<A> aa(3, 10);
+    //     // aa.push_back(A(7));
+    //     // aa.push_back(8);
+    //     aa.clear();
+    //     std::cout << "clear over.\n";
+    //     std::cout << aa.capacity() << std::endl;
+    // }
+    // std::cout << "Over!\n";
+    // bool arr2[10] = {true};
+    // print_vector(arr1);
+    // print_vector(arr2);
+    //
+    // std::vector<std::string> v_s = {10, "abc"};
+    // print_vector(v_s);
+    // v_s = {10, "efg"};
+    // print_vector(v_s);
+    //
+    // int size = 10;
+    // int arr[size];
+    // // print_vector(arr);
+    // for (auto &i: arr)
+    //     std::cout << i << ",";
+    // std::cout << std::endl;
+    //
+    // std::vector<int> v1 = {10};
+    // std::vector<int> v2{10};
+    // print_vector(v1);
+    // print_vector(v2);
+    // std::vector<int> temp(25000000000);
+    // std::cout << "temp, " << "max_size = " << temp.max_size() << ", capacity = " << temp.capacity() << std::endl;
+    // for (int i = 0; i < 100000000; i ++) {
+    //     int a = 200 + i;
+    //     for (int i = 0; i < 100000000; i ++) {
+    //         int b = a + i;
+    //     }
+    // }
     return 0;
 }
