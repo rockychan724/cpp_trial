@@ -1,10 +1,10 @@
 include_directories(
-        /usr/local/opencv4/include/opencv4
+        /usr/include/opencv4
 )
 
-link_directories(
-        /usr/local/opencv4/lib
-)
+# link_directories(
+#         /usr/local/opencv4/lib
+# )
 
 add_executable(third_opencv_test test.cpp)
 
