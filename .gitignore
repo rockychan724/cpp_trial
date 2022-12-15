@@ -72,8 +72,9 @@ Thumbs.db
 *.exe
 
 # IDE
-.idea
+.idea/
+.vscode/
 
 # build
-build
-cmake-build-debug
+build/
+cmake-build*
