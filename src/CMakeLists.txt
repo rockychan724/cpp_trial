@@ -1,5 +1,6 @@
 # add_subdirectory(third)
 add_subdirectory(other)
+add_subdirectory(template)
 
 add_executable(main main.cpp)
 add_executable(temp temp.cpp)
